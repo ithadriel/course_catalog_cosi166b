@@ -23,5 +23,5 @@ end
 
 #load courses
 courses.each do |course|
-  Course.create(term:course["term"], name:course["name"], code:course["code"], description:course["description"], credits:course["credits"], independent_study:course["independent_study"])
+  Course.create(name:course["name"], code:course["code"], description:course["description"], independent_study:course["independent_study"])
 end

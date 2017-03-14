@@ -1,1 +1,6 @@
 <%= @user.name %>, <%= @user.email %>
+<% if logged_in? %>
+  <h2><%= link_to 'Courses', courses_path %></h2>
+  <h2><%= link_to 'Subjects', subjects_path %></h2>
+  <h2><%= link_to 'Instructors', instructors_path %></h2>
+<% end %>
