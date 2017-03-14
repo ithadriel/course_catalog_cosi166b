@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  term: 1
+  code: MyString
+  name: MyString
+  description: MyString
+  credits: 1
+  independent_study: false
+
+two:
+  term: 1
+  code: MyString
+  name: MyString
+  description: MyString
+  credits: 1
+  independent_study: false
