@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314224022) do
+ActiveRecord::Schema.define(version: 20170319224223) do
+
+  create_table "course_subject_links", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_subject_links_on_course_id"
+    t.index ["subject_id"], name: "index_course_subject_links_on_subject_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string   "code"
@@ -19,6 +28,15 @@ ActiveRecord::Schema.define(version: 20170314224022) do
     t.boolean  "independent_study"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -34,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170314224022) do
     t.integer  "term"
     t.string   "name"
     t.string   "abbreviation"
+    t.string   "brandeis_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

@@ -2,28 +2,38 @@
 
 <h1>Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Independent study</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
+<% if @courses.blank? %>
+  <h4>There are no courses containing the term <%= params[:search] %>.</h4>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= course.code %></td>
-        <td><%= course.name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.independent_study %></td>
-        <td><%= link_to 'Show', course %></td>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Independent study</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.code %></td>
+          <td><%= course.name %></td>
+          <td><%= course.description %></td>
+          <td><%= course.independent_study %></td>
+          <td><%= link_to 'Show', course %></td>
+          <% if logged_in? %>
+            <td><%= form_for(:enrollment, url: "/enrollments/create/#{current_user.id}&#{course.id}") do |f| %>
+                  <%= f.submit "Enroll"%>
+                <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <br>

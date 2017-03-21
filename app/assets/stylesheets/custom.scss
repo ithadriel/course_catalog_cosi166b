@@ -174,3 +174,7 @@ input {
     color: $state-danger-text;
   }
 }
+
+input[type="submit"] {
+  margin-top: 16px;
+}

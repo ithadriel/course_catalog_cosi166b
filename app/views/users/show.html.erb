@@ -1,6 +1,29 @@
 <%= @user.name %>, <%= @user.email %>
-<% if logged_in? %>
+<% if logged_in? && (@user == current_user) %>
   <h2><%= link_to 'Courses', courses_path %></h2>
   <h2><%= link_to 'Subjects', subjects_path %></h2>
   <h2><%= link_to 'Instructors', instructors_path %></h2>
+  <h1><strong>Enrollments:</strong></h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Independent study</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <% @user.courses.each do |course| %>
+      <tbody>
+        <tr>
+          <td><%= course.code %></td>
+          <td><%= course.name %></td>
+          <td><%= course.description %></td>
+          <td><%= course.independent_study %></td>
+          <td><%= link_to 'Show', course %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  <br>
 <% end %>

@@ -5,6 +5,20 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    if params[:search] && params[:subject]
+      @courses = Course.joins(:course_subject_links).where("courses.name LIKE ? and course_subject_links.subject_id = ?", "%#{params[:search]}%", params[:subject])
+    elsif params[:subject]
+      @courses = Course.joins(:course_subject_links).where("course_subject_links.subject_id = ?", params[:subject])
+    else
+      @courses = Course.all
+    end
+  end
+
+  def add_course
+    user = User.find(params[:user_id])
+    course = Course.find(params[:course_id])
+    Enrollment.create(user_id:user.id, course_id:course.id)
+    redirect_to user
   end
 
   # GET /courses/1

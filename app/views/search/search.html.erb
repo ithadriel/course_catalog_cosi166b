@@ -1,0 +1,6 @@
+<h1>Search</h1>
+<%= form_tag(courses_path, :method => "get", id: "search") do %>
+  <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "name") %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>

@@ -4,6 +4,7 @@ class CreateSubjects < ActiveRecord::Migration[5.0]
       t.integer :term
       t.string :name
       t.string :abbreviation
+      t.string :brandeis_id
 
       t.timestamps
     end
