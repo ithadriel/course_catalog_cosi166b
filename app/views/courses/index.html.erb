@@ -4,7 +4,8 @@
 
 <% if @courses.blank? %>
   <h4>There are no courses containing the term <%= params[:search] %>.</h4>
-<% else %>
+<% elsif logged_in? %>
+  <% @courses = @courses - current_user.courses %>
   <table>
     <thead>
       <tr>
@@ -25,15 +26,15 @@
           <td><%= course.independent_study %></td>
           <td><%= link_to 'Show', course %></td>
           <% if logged_in? %>
-            <td><%= form_for(:enrollment, url: "/enrollments/create/#{current_user.id}&#{course.id}") do |f| %>
-                  <%= f.submit "Enroll"%>
-                <% end %>
-            </td>
+              <td><%= form_for(:enrollment, url: "/enrollments/create/#{current_user.id}&#{course.id}") do |f| %>
+                    <%= f.submit "Enroll"%>
+                  <% end %>
+              </td>
           <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
+<% else %>
+  <h2>Please log in to see courses.</h2>
 <% end %>
-
-<br>
