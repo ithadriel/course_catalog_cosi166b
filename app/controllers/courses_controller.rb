@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
     if params[:search] && params[:subject]
-      @courses = Course.joins(:course_subject_links).where("courses.name LIKE ? and course_subject_links.subject_id = ?", "%#{params[:search]}%", params[:subject])
+      @courses = Course.joins(:course_subject_links).where("LOWER(courses.name) LIKE ? and course_subject_links.subject_id = ?", "%#{params[:search].downcase}%", params[:subject])
     elsif params[:subject]
       @courses = Course.joins(:course_subject_links).where("course_subject_links.subject_id = ?", params[:subject])
     else
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  
+
   def all
     @courses = Course.all
   end
