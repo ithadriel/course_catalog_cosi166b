@@ -13,19 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 
 // mostly courtesy of RailsCasts, but modified appropriately to do what I need it to do
 
-document.addEventListener("turbolinks:load", function() {
+$(document).on('turbolinks:load', function() {
   $(function() {
     $("#search input").keyup(function() {
       $.get($("#search").attr("action"), $("#search").serialize(), null, "script");
       return false;
     });
     $("#subjects").change(function() {
-      $.get($("#subjects").attr("action"), $("#subjects").serialize(), null, "script");
+      $.get($("#search").attr("action"), $("#search").serialize(), null, "script");
       return false;
     });
   });
-});
+})
