@@ -1,4 +1,6 @@
 <h1>Search</h1>
+<p> THIS IS NOW DEPRECATED. I AM LEAVING IT IN FOR REFERENCE PURPOSES, BUT THIS PAGE IS NO LONGER USED.
+  TO PERFORM SEARCHES WITH AJAX FUNCTIONALITY, USE /courses. THANK YOU</p>
 <%= form_tag(courses_path, :method => "get", id: "search") do %>
   <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "name") %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>

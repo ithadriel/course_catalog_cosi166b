@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// mostly courtesy of RailsCasts, but modified appropriately to do what I need it to do
+$(function() {
+  $("#search input").keyup(function() {
+    $.get($("#search").attr("action"), $("#search").serialize(), null, "script");
+    return false;
+  });
+  $("#subjects").change(function() {
+    $.get($("#subjects").attr("action"), $("#subjects").serialize(), null, "script");
+    return false;
+  });
+});

@@ -1,6 +1,7 @@
-<%= @user.name %>, <%= @user.email %>
+<strong>Name: </strong> <%= @user.name %> <br>
+<strong>Email: </strong> <%= @user.email %> <br>
 <% if logged_in? && (@user == current_user) %>
-  <h2><%= link_to 'Courses', courses_path %></h2>
+  <h2><%= link_to 'Courses', '../courses/all' %></h2>
   <h2><%= link_to 'Subjects', subjects_path %></h2>
   <h2><%= link_to 'Instructors', instructors_path %></h2>
   <h1><strong>Enrollments:</strong></h1>

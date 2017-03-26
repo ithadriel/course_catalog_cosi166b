@@ -14,6 +14,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  
+  def all
+    @courses = Course.all
+  end
+
   def add_course
     user = User.find(params[:user_id])
     course = Course.find(params[:course_id])

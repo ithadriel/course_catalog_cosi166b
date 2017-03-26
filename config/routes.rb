@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'search/search'
-
+  get '/courses/all', to: 'courses#all'
   resources :courses
   resources :subjects
   resources :instructors
