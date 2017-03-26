@@ -4,6 +4,11 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$red_2: #C2132B;
+$dark_red_2: #7A0C1B;
+$light_grey_2: #A5A5A5;
+
+
 
 /* universal */
 
@@ -177,4 +182,37 @@ input {
 
 input[type="submit"] {
   margin-top: 16px;
+}
+
+a:link, a:visited {
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   transition: 0.2s;
+}
+a:hover, a:active {
+   box-shadow: 0px 3px 15px -2px rgba(0,0,0,0.65);
+}
+
+table, td, th {
+  border-bottom: 1px solid #CCC;
+  text-align: center;
+}
+th{
+  background-color: $red_2;
+  color:white;
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  overflow:hidden;
+  padding: 10px;
+  height:30px;
+  width: 50px;
+}
+tr:hover {
+  background-color: $light_grey_2
 }

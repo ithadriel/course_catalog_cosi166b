@@ -1,10 +1,15 @@
-<strong>Name: </strong> <%= @user.name %> <br>
-<strong>Email: </strong> <%= @user.email %> <br>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
 <% if logged_in? && (@user == current_user) %>
-  <h2><%= link_to 'Courses', '../courses/all' %></h2>
-  <h2><%= link_to 'Subjects', subjects_path %></h2>
-  <h2><%= link_to 'Instructors', instructors_path %></h2>
-  <h1><strong>Enrollments:</strong></h1>
+  <h1><strong>My Enrollments:</strong></h1>
     <table>
       <thead>
         <tr>
